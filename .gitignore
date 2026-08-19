@@ -1,0 +1,26 @@
+# Eclipse
+.metadata/
+.recommenders/
+.settings/
+
+# Java
+*.class
+
+# Build
+bin/
+build/
+target/
+
+# Gradle
+.gradle/
+
+# VS Code
+.vscode/
+
+# NetBeans
+nbproject/private/
+dist/
+
+# OS
+.DS_Store
+Thumbs.db
