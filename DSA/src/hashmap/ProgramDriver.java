@@ -10,6 +10,7 @@ public class ProgramDriver {
 		hs.put(111,"parvej");
 		hs.put(116,"amit");
 		hs.put(121,"ubaid");
+		hs.put(null, "Vinay");
 		
 		
 		hs.remove(101);

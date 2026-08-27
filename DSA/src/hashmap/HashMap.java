@@ -5,16 +5,16 @@ public class HashMap<K, V> {
 	public HashMap(int size) {
 		this.buckets = new Node[size];
 	}
-	public void put(int key, String value) {
-		Node<Integer,String> nn = new Node<Integer,String>(key,value);
-		int index = getIndex(key);
+	public void put(K key, V value) {
+		Node<K, V> nn = new Node<K,V>(key,value);
+		int index = getIndex((Integer)key);
 		Node head = buckets[index];
 		if(head == null) {
 			buckets[index] = nn;
 			return;
 		}
 		while(head!= null) {
-			if(head.key == (Integer)key) {
+			if(head.key == key) {
 				head.value = value;
 			}
 			if(head.next == null) break;
@@ -25,33 +25,33 @@ public class HashMap<K, V> {
 	private int getIndex(int key) {
 		return key%buckets.length;
 	}
-	public String get(int key) {
-		int index = getIndex(key);
+	public V get(K key) {
+		int index = getIndex((int)key);
 		Node head = buckets[index];
 		while(head != null) {
-			if(head.key == (Integer)key) {
-				return (String) head.value;
+			if(head.key == key) {
+				return (V)head.value;
 			}
 			head = head.next;
 		}
 		return null;
 	}
-	public void remove(int key) {
-		int index = getIndex(key);
+	public void remove(K key) {
+		int index = getIndex((int)key);
 		Node head = buckets[index];
 		Node temp = head;
 		if(head == null) {
 			System.out.println("No such Elements");
 			return;
 		}
-		if(temp.key == (Integer) key) {
+		if(temp.key == key) {
 			buckets[index] = temp.next;
 			temp.next = null;
 			return;
 		}
 		temp = head;
 		while(temp.next != null) {
-			if(temp.next.key == (Integer)key) {
+			if(temp.next.key == key) {
 				Node t = temp.next.next;
 				if(temp.next.next != null) {
 					temp.next.next = null;
@@ -63,7 +63,7 @@ public class HashMap<K, V> {
 		}
 		
 	}
-	public boolean containsValue(String value) {
+	public boolean containsValue(V value) {
 		for(Node n : buckets) {
 			while(n != null) {
 				if(n.value == value) {
@@ -74,8 +74,8 @@ public class HashMap<K, V> {
 		}
 		return false;
 	}
-	public boolean containsKey(int key) {
-		int index = getIndex(key);
+	public boolean containsKey(K key) {
+		int index = getIndex((int)key);
 		Node head = buckets[index];
 			while(head != null) {
 				if(head.key == (Integer)key) {
